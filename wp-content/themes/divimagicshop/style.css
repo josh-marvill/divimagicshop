@@ -1,0 +1,72 @@
+/*
+Theme Name: Divimagicshop
+Description: Block theme for Divimagicshop. Black curtain header with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
+Version: 1.0.0
+Requires at least: 6.6
+Tested up to: 7.1
+Requires PHP: 8.1
+Text Domain: divimagicshop
+*/
+
+/* Small things theme.json can't express. */
+
+/* The "curtain": black band with a red bottom edge (header, home welcome, page headings). */
+.is-style-curtain { border-bottom: 4px solid var(--wp--preset--color--red); }
+
+/* Wordmark: DIVI MAGIC SHOP, with MAGIC in red. */
+.dms-wordmark { margin: 0; font-family: var(--wp--preset--font-family--serif); font-weight: 700; font-size: 1.35rem; letter-spacing: .04em; line-height: 1; }
+.dms-wordmark a { color: var(--wp--preset--color--paper); text-decoration: none; }
+.dms-wordmark a:hover { text-decoration: none; }
+.dms-wordmark .dms-red { color: var(--wp--preset--color--red); }
+
+/* Header: keep the mini cart and menu legible on black. */
+.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
+.dms-header .wc-block-mini-cart__button { color: var(--wp--preset--color--paper); }
+.dms-header .wc-block-mini-cart__badge { background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper); }
+
+/* Footer links */
+.dms-footer a { color: var(--wp--preset--color--paper); }
+.dms-footer a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
+.dms-footer .dms-footer__links { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
+
+/* An outlined button for dark bands. */
+.wp-block-button.is-style-outline-light > .wp-block-button__link {
+	background: transparent; color: var(--wp--preset--color--paper); border: 1px solid currentColor;
+}
+.wp-block-button.is-style-outline-light > .wp-block-button__link:hover { background: var(--wp--preset--color--paper); color: var(--wp--preset--color--ink); }
+
+/* Tutorial and FAQ cards in archives */
+.dms-card-grid .wp-block-post-featured-image { aspect-ratio: 16 / 9; overflow: hidden; background: var(--wp--preset--color--ink); margin-bottom: .75rem; }
+.dms-card-grid .wp-block-post-featured-image img { width: 100%; height: 100%; object-fit: cover; }
+.dms-card-grid .wp-block-post-title a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
+
+/* WooCommerce bits on the white body */
+.wc-block-components-product-price ins, .price ins { text-decoration: none; color: var(--wp--preset--color--red); }
+.wc-block-breadcrumbs a, .woocommerce-breadcrumb a { color: var(--wp--preset--color--muted); }
+
+:where(a, button, summary, input, select, textarea):focus-visible { outline: 2px solid var(--wp--preset--color--red); outline-offset: 2px; }
+
+/* Space before the footer: every page but the home page, which ends on a full-width band. */
+main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
+.home main.wp-block-group { padding-bottom: 0; }
+.dms-footer h3 + .wp-block-list { margin-top: .75rem; }
+
+/* Product grids: left-aligned like the home shelves. */
+.wc-block-product-template .wc-block-components-product-button { align-items: flex-start; justify-content: flex-start; }
+.wc-block-product-template .wp-block-post-title a { color: inherit; }
+.wc-block-product-template .wp-block-post-title a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
+.wc-block-catalog-sorting select, .orderby { padding: .45rem .6rem; border: 1px solid var(--wp--preset--color--line); background: var(--wp--preset--color--paper); }
+
+/* Product tabs: flat, with a red underline on the active tab. */
+.woocommerce-tabs ul.tabs { display: flex; gap: 1.75rem; list-style: none; margin: 0 0 1.5rem; padding: 0; border-bottom: 1px solid var(--wp--preset--color--line); }
+.woocommerce-tabs ul.tabs::before, .woocommerce-tabs ul.tabs::after, .woocommerce-tabs ul.tabs li::before, .woocommerce-tabs ul.tabs li::after { display: none !important; }
+.woocommerce-tabs ul.tabs li { background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important; border-radius: 0 !important; }
+.woocommerce-tabs ul.tabs li a { display: block; padding: .6rem 0; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--wp--preset--color--muted) !important; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.woocommerce-tabs ul.tabs li.active a { color: var(--wp--preset--color--ink) !important; border-bottom-color: var(--wp--preset--color--red); }
+.woocommerce-tabs .panel > h2:first-child { display: none; }
+
+/* Sections under a product or tutorial */
+.wp-block-divimagicshop-product-tutorials, .wp-block-divimagicshop-tutorial-products { margin-top: var(--wp--preset--spacing--60); }
+
+/* No gap between the last section and the footer (the site-wide block gap). */
+.wp-site-blocks > footer { margin-block-start: 0; }

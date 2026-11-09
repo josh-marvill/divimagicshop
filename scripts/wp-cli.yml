@@ -1,0 +1,4 @@
+# Read by every WP-CLI call in these scripts (see lib.sh).
+# Laragon runs Apache with mod_rewrite, so let WP-CLI write .htaccess.
+apache_modules:
+  - mod_rewrite

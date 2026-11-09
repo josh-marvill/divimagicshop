@@ -1,0 +1,86 @@
+/* Layout for the Divimagicshop blocks. Colors and fonts come from the theme's presets,
+   with fallbacks so the blocks still read well under another theme. */
+
+.dms-shelves { display: grid; gap: var(--wp--preset--spacing--60, 3rem); }
+
+.dms-shelf__head {
+	display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+	border-bottom: 1px solid var(--wp--preset--color--line, #e5e5e5);
+	padding-bottom: .5rem; margin-bottom: 1.25rem;
+}
+.dms-shelf__title {
+	margin: 0; font-family: var(--wp--preset--font-family--sans, sans-serif);
+	font-size: .85rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+}
+.dms-shelf__all {
+	font-family: var(--wp--preset--font-family--sans, sans-serif); font-size: .85rem; font-weight: 600;
+	color: var(--wp--preset--color--red, #d4111e); text-decoration: none; white-space: nowrap;
+}
+.dms-shelf__all:hover, .dms-shelf__all:focus-visible { text-decoration: underline; }
+
+/* A shelf: a grid on wide screens, a swipeable row on phones. */
+.dms-shelf__row {
+	list-style: none; margin: 0; padding: 0;
+	display: grid; gap: 1.25rem; grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 900px) { .dms-shelf__row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+	.dms-shelf__row {
+		display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: .9rem;
+		padding-bottom: .5rem; -webkit-overflow-scrolling: touch;
+	}
+	.dms-shelf__row > .dms-card { flex: 0 0 62%; scroll-snap-align: start; }
+}
+
+.dms-card { margin: 0; }
+.dms-card__link { display: flex; flex-direction: column; gap: .35rem; color: inherit; text-decoration: none; }
+.dms-card__media {
+	display: block; aspect-ratio: 1 / 1; overflow: hidden;
+	background: var(--wp--preset--color--smoke, #f2f2f2);
+}
+.dms-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+.dms-card__link:hover .dms-card__media img { transform: scale(1.04); }
+.dms-card__name { font-family: var(--wp--preset--font-family--sans, sans-serif); font-size: .95rem; font-weight: 600; line-height: 1.3; }
+.dms-card__link:hover .dms-card__name { color: var(--wp--preset--color--red, #d4111e); }
+.dms-card__price { font-family: var(--wp--preset--font-family--sans, sans-serif); font-size: .9rem; }
+.dms-card__price del { opacity: .55; margin-right: .3em; }
+.dms-card__price ins { text-decoration: none; color: var(--wp--preset--color--red, #d4111e); }
+
+.dms-shelves--empty { padding: 3rem 0; text-align: center; }
+
+/* FAQ */
+.dms-faq { display: grid; gap: 2.5rem; }
+.dms-faq__topic { font-size: 1.5rem; margin: 0 0 .75rem; }
+.dms-faq__item { border-top: 1px solid var(--wp--preset--color--line, #e5e5e5); }
+.dms-faq__item:last-child { border-bottom: 1px solid var(--wp--preset--color--line, #e5e5e5); }
+.dms-faq__q {
+	cursor: pointer; list-style: none; padding: 1rem 2rem 1rem 0; position: relative;
+	font-family: var(--wp--preset--font-family--sans, sans-serif); font-weight: 600;
+}
+.dms-faq__q::-webkit-details-marker { display: none; }
+.dms-faq__q::after {
+	content: "+"; position: absolute; right: .25rem; top: .85rem; font-size: 1.25rem; line-height: 1;
+	color: var(--wp--preset--color--red, #d4111e);
+}
+.dms-faq__item[open] > .dms-faq__q::after { content: "–"; }
+.dms-faq__a { padding: 0 0 1rem; }
+.dms-faq__a > :first-child { margin-top: 0; }
+.dms-faq__item:target { scroll-margin-top: 6rem; }
+
+/* Tutorials */
+.dms-video { margin: 0 0 2rem; aspect-ratio: 16 / 9; }
+.dms-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.dms-tuts__list {
+	list-style: none; margin: 1rem 0 0; padding: 0;
+	display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.dms-tut a { display: flex; flex-direction: column; gap: .4rem; color: inherit; text-decoration: none; }
+.dms-tut__media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--wp--preset--color--ink, #0b0b0b); }
+.dms-tut__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dms-tut__title { font-family: var(--wp--preset--font-family--sans, sans-serif); font-weight: 600; }
+.dms-tut a:hover .dms-tut__title { color: var(--wp--preset--color--red, #d4111e); }
+
+.dms-placeholder {
+	padding: 1.5rem; border: 1px dashed currentColor; opacity: .7;
+	font-family: var(--wp--preset--font-family--sans, sans-serif); font-size: .9rem; text-align: center;
+}

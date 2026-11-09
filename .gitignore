@@ -1,0 +1,17 @@
+# Track only our own files. WordPress core, uploads, other plugins and themes,
+# wp-config.php, .htaccess and wp-cli.phar live on each machine / on Cloudways.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/docs/
+!/scripts/
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/divimagicshop/
+!/wp-content/mu-plugins/
+/wp-content/mu-plugins/*
+!/wp-content/mu-plugins/divimagicshop-core.php
+!/wp-content/mu-plugins/divimagicshop-core/
