@@ -1,72 +1,134 @@
 /*
 Theme Name: Divimagicshop
-Description: Block theme for Divimagicshop. Black curtain header with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
-Version: 1.0.0
+Description: Block theme for Divimagicshop. Black curtain bands with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
+Version: 1.1.0
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
 Text Domain: divimagicshop
 */
 
-/* Small things theme.json can't express. */
+/* What theme.json can't express. Red is reserved for actions and the curtain edge. */
 
-/* The "curtain": black band with a red bottom edge (header, home welcome, page headings). */
+/* ---- Browser surfaces ---- */
+::selection { background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper); }
+html { scrollbar-color: var(--wp--preset--color--muted) var(--wp--preset--color--smoke); }
+body { caret-color: var(--wp--preset--color--red); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible { outline: 2px solid var(--wp--preset--color--red); outline-offset: 3px; }
+:where(h1, h2, h3) { text-wrap: balance; }
+:where(p, li) { text-wrap: pretty; }
+.price, .wc-block-components-product-price, .woocommerce-Price-amount { font-variant-numeric: tabular-nums lining-nums; }
+
+/* ---- The curtain: black band, red bottom edge ---- */
 .is-style-curtain { border-bottom: 4px solid var(--wp--preset--color--red); }
+.is-style-curtain p:not(.dms-wordmark) a { color: var(--wp--preset--color--paper); }
+.is-style-curtain p:not(.dms-wordmark) a:hover { color: var(--wp--preset--color--red); }
+.wp-block-navigation a, .dms-wordmark a { text-decoration: none; }
 
-/* Wordmark: DIVI MAGIC SHOP, with MAGIC in red. */
-.dms-wordmark { margin: 0; font-family: var(--wp--preset--font-family--serif); font-weight: 700; font-size: 1.35rem; letter-spacing: .04em; line-height: 1; }
+/* Bodoni's display hairlines vanish at large sizes on screen: pin a sturdier optical size. */
+:where(h1, h2, h3, h4, .dms-wordmark, .dms-shelf__title) { font-variation-settings: "opsz" 14; }
+
+/* Home welcome */
+.dms-hero__title { margin: 0; font-size: clamp(3rem, 8.5vw, 6rem); line-height: .95; letter-spacing: -0.025em; font-weight: 600; }
+.dms-hero__title em { font-style: italic; font-weight: 500; color: var(--wp--preset--color--red); }
+.dms-hero__lede { max-width: 38ch; margin-top: var(--wp--preset--spacing--40); font-size: clamp(1.1rem, 1.6vw, 1.3rem); }
+
+/* ---- Header ---- */
+.dms-wordmark { margin: 0; font-family: var(--wp--preset--font-family--serif); font-weight: 700; font-size: 1.35rem; letter-spacing: .03em; line-height: 1; }
 .dms-wordmark a { color: var(--wp--preset--color--paper); text-decoration: none; }
-.dms-wordmark a:hover { text-decoration: none; }
 .dms-wordmark .dms-red { color: var(--wp--preset--color--red); }
+.dms-header .wp-block-navigation a { text-decoration: none; }
+.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--red); }
+.dms-header .wc-block-mini-cart__button { color: var(--wp--preset--color--paper); padding: .5rem; }
+.dms-header .wc-block-mini-cart__badge { background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper); border-color: var(--wp--preset--color--ink); }
 
-/* Header: keep the mini cart and menu legible on black. */
-.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
-.dms-header .wc-block-mini-cart__button { color: var(--wp--preset--color--paper); }
-.dms-header .wc-block-mini-cart__badge { background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper); }
+/* ---- Footer ---- */
+.dms-footer__nav { font-size: .875rem; }
+.dms-footer__nav a { color: var(--wp--preset--color--paper); text-decoration: none; }
+.dms-footer__nav a:hover { color: var(--wp--preset--color--red); }
+.dms-footer__legal { margin-top: var(--wp--preset--spacing--50); font-size: .8rem; }
 
-/* Footer links */
-.dms-footer a { color: var(--wp--preset--color--paper); }
-.dms-footer a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
-.dms-footer .dms-footer__links { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
-
-/* An outlined button for dark bands. */
-.wp-block-button.is-style-outline-light > .wp-block-button__link {
-	background: transparent; color: var(--wp--preset--color--paper); border: 1px solid currentColor;
+/* ---- Section titles and "more" links (shared with the shop blocks) ---- */
+.dms-section-title { margin: 0; font-size: var(--wp--preset--font-size--x-large); }
+.dms-more { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.dms-more::after, .dms-more--back::before {
+	content: ""; width: 1em; height: 1em; background: currentColor; flex: none;
+	-webkit-mask: var(--dms-arrow) center / contain no-repeat; mask: var(--dms-arrow) center / contain no-repeat;
+	transition: transform .25s cubic-bezier(.16, 1, .3, 1);
 }
-.wp-block-button.is-style-outline-light > .wp-block-button__link:hover { background: var(--wp--preset--color--paper); color: var(--wp--preset--color--ink); }
+.dms-more--back::after { content: none; }
+.dms-more--back::before { transform: scaleX(-1); }
+.dms-more:hover::after { transform: translateX(.2em); }
+.dms-more--back:hover::before { transform: scaleX(-1) translateX(.2em); }
+:root { --dms-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 10h13M11.5 5l5 5-5 5'/%3E%3C/svg%3E"); }
 
-/* Tutorial and FAQ cards in archives */
-.dms-card-grid .wp-block-post-featured-image { aspect-ratio: 16 / 9; overflow: hidden; background: var(--wp--preset--color--ink); margin-bottom: .75rem; }
+/* ---- Tutorial lists ---- */
+.dms-card-grid .wp-block-post-template { row-gap: var(--wp--preset--spacing--50); }
+.dms-card-grid .wp-block-post { border-top: 1px solid var(--wp--preset--color--ink); padding-top: var(--wp--preset--spacing--30); }
+.dms-card-grid .wp-block-post-featured-image { margin: 0 0 var(--wp--preset--spacing--30); overflow: hidden; }
 .dms-card-grid .wp-block-post-featured-image img { width: 100%; height: 100%; object-fit: cover; }
-.dms-card-grid .wp-block-post-title a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
+.dms-card-grid .wp-block-post-title a { color: inherit; text-decoration: none; }
+.dms-card-grid .wp-block-post-title a:hover { color: var(--wp--preset--color--red); }
+.dms-card-grid .wp-block-post-excerpt__excerpt { margin: 0; }
 
-/* WooCommerce bits on the white body */
-.wc-block-components-product-price ins, .price ins { text-decoration: none; color: var(--wp--preset--color--red); }
-.wc-block-breadcrumbs a, .woocommerce-breadcrumb a { color: var(--wp--preset--color--muted); }
-
-:where(a, button, summary, input, select, textarea):focus-visible { outline: 2px solid var(--wp--preset--color--red); outline-offset: 2px; }
-
-/* Space before the footer: every page but the home page, which ends on a full-width band. */
+/* ---- Shop ---- */
 main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .home main.wp-block-group { padding-bottom: 0; }
-.dms-footer h3 + .wp-block-list { margin-top: .75rem; }
-
-/* Product grids: left-aligned like the home shelves. */
-.wc-block-product-template .wc-block-components-product-button { align-items: flex-start; justify-content: flex-start; }
-.wc-block-product-template .wp-block-post-title a { color: inherit; }
-.wc-block-product-template .wp-block-post-title a:hover { color: var(--wp--preset--color--red); text-decoration: none; }
-.wc-block-catalog-sorting select, .orderby { padding: .45rem .6rem; border: 1px solid var(--wp--preset--color--line); background: var(--wp--preset--color--paper); }
-
-/* Product tabs: flat, with a red underline on the active tab. */
-.woocommerce-tabs ul.tabs { display: flex; gap: 1.75rem; list-style: none; margin: 0 0 1.5rem; padding: 0; border-bottom: 1px solid var(--wp--preset--color--line); }
-.woocommerce-tabs ul.tabs::before, .woocommerce-tabs ul.tabs::after, .woocommerce-tabs ul.tabs li::before, .woocommerce-tabs ul.tabs li::after { display: none !important; }
-.woocommerce-tabs ul.tabs li { background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important; border-radius: 0 !important; }
-.woocommerce-tabs ul.tabs li a { display: block; padding: .6rem 0; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--wp--preset--color--muted) !important; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; }
-.woocommerce-tabs ul.tabs li.active a { color: var(--wp--preset--color--ink) !important; border-bottom-color: var(--wp--preset--color--red); }
-.woocommerce-tabs .panel > h2:first-child { display: none; }
-
-/* Sections under a product or tutorial */
-.wp-block-divimagicshop-product-tutorials, .wp-block-divimagicshop-tutorial-products { margin-top: var(--wp--preset--spacing--60); }
-
-/* No gap between the last section and the footer (the site-wide block gap). */
 .wp-site-blocks > footer { margin-block-start: 0; }
+
+.wc-block-breadcrumbs, .woocommerce-breadcrumb { font-size: .85rem; color: var(--wp--preset--color--muted); }
+.wc-block-breadcrumbs a, .woocommerce-breadcrumb a { color: var(--wp--preset--color--muted); text-decoration: none; }
+.wc-block-breadcrumbs a:hover, .woocommerce-breadcrumb a:hover { color: var(--wp--preset--color--ink); text-decoration: underline; }
+.wc-block-catalog-sorting select, .woocommerce-ordering select { font: inherit; font-size: .875rem; padding: .5rem 2rem .5rem .75rem; border: 1px solid var(--wp--preset--color--line); border-radius: 0; background-color: var(--wp--preset--color--paper); }
+
+/* Product cards in grids match the home shelves: image, name, price, all left-aligned. */
+.wc-block-product-template { row-gap: var(--wp--preset--spacing--50) !important; }
+.wc-block-product-template .wc-block-components-product-image { background: var(--wp--preset--color--smoke); margin: 0 !important; }
+.wc-block-product-template .wc-block-components-product-image img { aspect-ratio: 1; object-fit: cover; transition: transform .4s cubic-bezier(.16, 1, .3, 1); }
+.wc-block-product-template .wc-block-components-product-image:hover img { transform: scale(1.03); }
+.wc-block-product-template .wp-block-post-title { font-family: var(--wp--preset--font-family--sans); font-size: .95rem; font-weight: 600; line-height: 1.3; text-align: left; }
+.wc-block-product-template .wp-block-post-title a { color: inherit; text-decoration: none; }
+.wc-block-product-template .wp-block-post-title a:hover { color: var(--wp--preset--color--red); }
+.wc-block-product-template .wc-block-components-product-price { font-size: .9rem; text-align: left; }
+.dms-related { margin-top: var(--wp--preset--spacing--60); }
+.dms-related .dms-section-title { margin-bottom: var(--wp--preset--spacing--40); padding-bottom: .75rem; border-bottom: 1px solid var(--wp--preset--color--line); }
+
+/* On the grey tutorials band the cards carry their own rule. */
+.has-smoke-background-color .dms-shelf__head { border-bottom: 0; }
+
+/* Product page */
+.dms-buy .wc-block-components-product-price, .dms-buy .price { font-size: 1.5rem !important; color: var(--wp--preset--color--ink); }
+.dms-buy .wp-block-post-excerpt { margin: var(--wp--preset--spacing--40) 0; max-width: 46ch; }
+.dms-buy table.variations { border: 0; margin: 0 0 1rem; }
+.dms-buy table.variations th, .dms-buy table.variations td { border: 0; padding: 0 0 .5rem; text-align: left; vertical-align: middle; }
+.dms-buy table.variations th { padding-right: 1rem; font-size: .85rem; font-weight: 600; }
+.dms-buy select { font: inherit; padding: .65rem 2.25rem .65rem .8rem; border: 1px solid var(--wp--preset--color--ink); border-radius: 0; min-width: 14rem; line-height: 1.3; height: auto; background-color: var(--wp--preset--color--paper); }
+.dms-buy .reset_variations { font-size: .8rem; margin-left: .75rem; }
+.dms-buy form.cart:not(.variations_form), .dms-buy .woocommerce-variation-add-to-cart { display: flex; gap: .75rem; align-items: stretch; flex-wrap: wrap; }
+.dms-buy .quantity .qty { font: inherit; width: 4.5rem; height: 100%; min-height: 3rem; border: 1px solid var(--wp--preset--color--ink); border-radius: 0; text-align: center; }
+.dms-buy .single_add_to_cart_button { min-height: 3rem; }
+.dms-buy .single_add_to_cart_button.disabled { opacity: 1; background: var(--wp--preset--color--line); color: var(--wp--preset--color--muted); cursor: not-allowed; }
+.dms-buy .woocommerce-variation-price { margin-bottom: .75rem; }
+
+/* The description: one tab only, so show it as a plain section (see functions.php). */
+.dms-details .woocommerce-tabs ul.tabs { display: none; }
+.dms-details .woocommerce-tabs .panel { margin: var(--wp--preset--spacing--60) 0 0; padding: 0; max-width: 68ch; }
+.dms-details .woocommerce-tabs .panel > h2:first-child { font-size: var(--wp--preset--font-size--x-large); margin: 0 0 var(--wp--preset--spacing--30); }
+
+/* Cart: plain empty state, left-aligned, with the same product cards as the shop. */
+.wp-block-woocommerce-empty-cart-block .has-text-align-center { text-align: left !important; }
+.wc-block-cart__empty-cart__title.with-empty-cart-icon::before { display: none; }
+.wc-block-cart__empty-cart__title { font-size: var(--wp--preset--font-size--large); margin: 0 0 .5rem; }
+.wp-block-woocommerce-empty-cart-block .wp-block-separator { display: none; }
+.wp-block-woocommerce-empty-cart-block > h2:not(.wc-block-cart__empty-cart__title) { font-size: var(--wp--preset--font-size--x-large); margin-top: var(--wp--preset--spacing--60); padding-bottom: .75rem; border-bottom: 1px solid var(--wp--preset--color--line); }
+.wc-block-grid__products { gap: 1.5rem; margin: var(--wp--preset--spacing--40) 0 0 !important; }
+.wc-block-grid__product { text-align: left !important; border: 0 !important; padding: 0 !important; }
+.wc-block-grid__product-link { color: inherit; text-decoration: none; }
+.wc-block-grid__product-image { margin-bottom: .6rem !important; background: var(--wp--preset--color--smoke); }
+.wc-block-grid__product-image img { aspect-ratio: 1; object-fit: cover; }
+.wc-block-grid__product-title { font-family: var(--wp--preset--font-family--sans); font-size: .95rem !important; font-weight: 600 !important; margin: 0 0 .2rem !important; }
+.wc-block-grid__product-link:hover .wc-block-grid__product-title { color: var(--wp--preset--color--red); }
+.wc-block-grid__product-price { font-size: .9rem !important; margin: 0 !important; }
+.wc-block-grid__product-add-to-cart { display: none !important; }
+

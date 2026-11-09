@@ -18,6 +18,14 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
 - Post types live in a mu-plugin (`dms_tutorial`, `dms_faq` + `dms_faq_topic`), not the theme.
 - Tutorials link to products (one meta row per product); product pages list their tutorials.
 - Shop blocks are dynamic PHP blocks with a no-build editor script.
-- Wordmark DIVI**MAGIC**SHOP until there is a logo. System font stacks (no font downloads).
+- Wordmark DIVI**MAGIC**SHOP until there is a logo. Headings in Bodoni Moda (OFL, self-hosted in the theme), body in the system sans.
 - Contact page is text only (a form would need another plugin).
 - The dealer stays in demo mode: no test order reaches Cafe24.
+
+**Polish + distill pass (2026-11-09)**
+- One action per band: the welcome has a single "Browse the shop" button; product cards link as a whole (no per-card buttons).
+- Product page: title, price, options, add to cart; description below as "The trick". No SKU (supplier codes stay internal), no attribute or reviews tabs.
+- Footer is one line of help links; the header already carries the main navigation.
+- Red is reserved for actions, the hero's "delivered." and the curtain edge; prices and links are ink.
+- Arrows and the FAQ open/close marker are drawn (CSS mask / bars), not text glyphs.
+- Cart and checkout get the same title band; checkout uses a wordmark-only header.

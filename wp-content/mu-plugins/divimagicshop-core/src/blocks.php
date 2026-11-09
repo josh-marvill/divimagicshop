@@ -126,7 +126,7 @@ function dms_render_shelf(WP_Term $term, int $limit, string $title = ''): string
 
     return '<section class="dms-shelf">'
         .'<header class="dms-shelf__head"><h2 class="dms-shelf__title">'.esc_html($title).'</h2>'
-        .(is_wp_error($link) ? '' : '<a class="dms-shelf__all" href="'.esc_url($link).'">See all <span aria-hidden="true">→</span></a>')
+        .(is_wp_error($link) ? '' : '<a class="dms-more" href="'.esc_url($link).'" aria-label="'.esc_attr(sprintf('See all %s', $title)).'">See all</a>')
         .'</header>'.dms_product_row($products).'</section>';
 }
 
@@ -259,9 +259,9 @@ function dms_render_product_tutorials(array $attributes, string $content, WP_Blo
         $thumb = get_the_post_thumbnail($tutorial, 'medium', ['class' => 'dms-tut__img', 'loading' => 'lazy']);
         $items .= '<li class="dms-tut"><a href="'.esc_url(get_permalink($tutorial)).'">'
             .($thumb ? '<span class="dms-tut__media">'.$thumb.'</span>' : '')
-            .'<span class="dms-tut__title">'.esc_html(get_the_title($tutorial)).'</span></a></li>';
+            .'<span class="dms-tut__title dms-more">'.esc_html(get_the_title($tutorial)).'</span></a></li>';
     }
 
     return '<section class="wp-block-divimagicshop-product-tutorials dms-tuts">'
-        .'<h2 class="dms-shelf__title">Learn it</h2><ul class="dms-tuts__list">'.$items.'</ul></section>';
+        .'<header class="dms-shelf__head"><h2 class="dms-shelf__title">Learn it</h2></header><ul class="dms-tuts__list">'.$items.'</ul></section>';
 }
