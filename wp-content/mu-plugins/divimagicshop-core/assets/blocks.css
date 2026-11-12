@@ -92,8 +92,8 @@
 	background: var(--wp--preset--color--red, #d4111e); color: var(--wp--preset--color--paper, #fff);
 	font: 700 .68rem/1 var(--wp--preset--font-family--sans, sans-serif); letter-spacing: .12em; text-transform: uppercase;
 }
-.dms-badge--out, .dms-badge--ink { background: var(--wp--preset--color--ink, #0b0b0b); }
-.dms-card:has(.dms-badge--out) .dms-card__media img { opacity: .55; }
+.dms-badge--ink { background: var(--wp--preset--color--ink, #0b0b0b); }
+.dms-card:has(.dms-badge--out) .dms-card__media img { opacity: .5; filter: grayscale(.4); }
 
 /* Search: a squared field with a drawn magnifier button. Inherits the band's colors. */
 .dms-search { display: flex; width: 100%; margin: 0; }
@@ -209,3 +209,18 @@ a.dms-chip:hover { border-color: var(--wp--preset--color--red, #d4111e); color: 
 .dms-chip__x::before, .dms-chip__x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 100%; height: 1.5px; background: currentColor; transform: translate(-50%, -50%) rotate(45deg); }
 .dms-chip__x::after { transform: translate(-50%, -50%) rotate(-45deg); }
 .dms-chips__clear { font-size: .82rem; color: var(--wp--preset--color--muted, #6b6b6b); }
+
+/* Out of stock: same badge on every card, the picture dimmed so available products lead. */
+.dms-is-out { position: relative; }
+.dms-is-out img { opacity: .5; filter: grayscale(.4); }
+.dms-is-out > .dms-badge { z-index: 1; }
+.dms-badge--out { background: var(--wp--preset--color--ink, #0b0b0b); color: var(--wp--preset--color--paper, #fff); }
+.dms-stock-tag { margin: .75rem 0 0; }
+.dms-stock-tag .dms-badge { position: static; display: inline-block; }
+/* WooCommerce's gallery flash, in the site's badge style instead of the default circle. */
+.woocommerce span.onsale.dms-badge, span.onsale.dms-badge {
+	position: absolute; top: .9rem !important; left: .9rem !important; right: auto !important; z-index: 9; min-width: 0; min-height: 0; margin: 0;
+	border-radius: 0; line-height: 1; padding: .35rem .6rem;
+	background: var(--wp--preset--color--red, #d4111e); color: var(--wp--preset--color--paper, #fff);
+	font: 700 .7rem/1 var(--wp--preset--font-family--sans, sans-serif); letter-spacing: .12em; text-transform: uppercase;
+}

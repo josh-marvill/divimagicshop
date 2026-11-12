@@ -2,14 +2,14 @@
 /**
  * Plugin Name: Divimagicshop Core
  * Description: Tutorials and FAQ post types, the shop's blocks, and placeholder content. Lives in mu-plugins so a theme change never loses content.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Requires at least: 6.6
  * Requires PHP: 8.1
  */
 
 defined('ABSPATH') || exit;
 
-const DMS_CORE_VERSION = '1.3.0';
+const DMS_CORE_VERSION = '1.3.1';
 const DMS_CORE_DIR = __DIR__.'/divimagicshop-core';
 
 require DMS_CORE_DIR.'/src/post-types.php';
