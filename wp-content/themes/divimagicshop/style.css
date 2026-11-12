@@ -165,7 +165,7 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-promise strong { font-size: .92rem; }
 .dms-promise span { font-size: .82rem; color: var(--wp--preset--color--muted); }
 .dms-promise a:hover strong { color: var(--wp--preset--color--red); }
-@media (max-width: 781px) {
+@media (max-width: 1000px) {
 	.dms-promises__row { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--wp--preset--spacing--30) !important; }
 	.dms-promises__row > .wp-block-column:nth-child(odd) { border-left: 0; padding-left: 0; }
 }
@@ -240,3 +240,19 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-closing .dms-search__input { border-color: #3a3a3a; background: #161616; }
 .dms-closing .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
 .home .wp-site-blocks > footer .dms-footer { border-top: 1px solid #222; }
+
+/* Phone menu: shopping first, then the information pages, left-aligned and large.
+   "Shop all" only shows inside the menu; on wider screens the category bar has it. */
+.dms-header .dms-nav-shop { display: none; }
+.dms-header .is-menu-open .dms-nav-shop { display: flex; }
+.dms-header .wp-block-navigation__responsive-container.is-menu-open { padding: var(--wp--preset--spacing--40) clamp(1rem, 4vw, 2.5rem); }
+.dms-header .is-menu-open .wp-block-navigation__responsive-container-content { align-items: flex-start !important; padding-top: var(--wp--preset--spacing--60); }
+.dms-header .is-menu-open .wp-block-navigation__container { align-items: flex-start !important; gap: 1.1rem !important; }
+.dms-header .is-menu-open .wp-block-navigation-item__content { font-family: var(--wp--preset--font-family--serif); font-size: 2rem; font-weight: 600; letter-spacing: -0.01em; text-transform: none; }
+.dms-header .is-menu-open .dms-nav-shop .wp-block-navigation-item__content { color: var(--wp--preset--color--red); }
+
+/* Category bar on phones: a wider fade at the end says "there's more, swipe". */
+@media (max-width: 600px) {
+	.dms-header__cats .dms-catbar { -webkit-mask: linear-gradient(90deg, #000 75%, transparent); mask: linear-gradient(90deg, #000 75%, transparent); }
+	.dms-header__cats .dms-catbar ul { padding-right: 4rem; }
+}
