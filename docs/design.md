@@ -29,3 +29,19 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
 - Red is reserved for actions, the hero's "delivered." and the curtain edge; prices and links are ink.
 - Arrows and the FAQ open/close marker are drawn (CSS mask / bars), not text glyphs.
 - Cart and checkout get the same title band; checkout uses a wordmark-only header.
+
+**Shop pass (2026-11-12)** — "it looks like a styled list of products"
+- Header: wordmark · product search · links + cart, then a bar with every top-level category
+  (the current one underlined in red, sitting on the header's rule on purpose).
+- Home: welcome with one featured product beside the headline (first product starred as featured,
+  else the newest) → four short reasons to buy → category picture tiles → "Just in" → "On sale"
+  (hidden when nothing is) → the category shelves (4 per shelf now) → tutorials.
+- Shop, category and product-search pages share one layout: filters on the left (categories with
+  counts, price ranges, in stock only), results count + sorting, removable filter chips, 3 across,
+  12 per page, squared pagination. On phones the filters fold into one "Categories & filters" button.
+- Filters are plain links, no extra plugin: WooCommerce's own `min_price`/`max_price`, plus
+  `in_stock=1` (mu-plugin). Price ranges are worked out from the catalogue's prices (round steps,
+  top range open-ended), so they suit whatever currency the store uses.
+- Badges on product cards: Sale (red), Sold out (ink). No eyebrow labels above headings; the
+  promise strip uses hairline dividers, not colored side rules.
+- The promise-strip wording is placeholder: check it against the real shipping/checkout before launch.

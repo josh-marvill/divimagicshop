@@ -1,7 +1,7 @@
 /*
 Theme Name: Divimagicshop
 Description: Block theme for Divimagicshop. Black curtain bands with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
-Version: 1.1.0
+Version: 1.2.0
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -132,3 +132,83 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .wc-block-grid__product-price { font-size: .9rem !important; margin: 0 !important; }
 .wc-block-grid__product-add-to-cart { display: none !important; }
 
+
+/* ---------------------------------------------------------------------------------------
+   Browsing like a shop (1.2): two-row header, welcome with a spotlight, promises strip,
+   category tiles, and the shop's sidebar of filters.
+   ------------------------------------------------------------------------------------ */
+
+/* Header: wordmark · search · links + cart, then the category bar. */
+.dms-header__main { row-gap: .9rem; }
+.dms-header__search { flex: 1 1 18rem; max-width: 30rem; margin-inline: auto; }
+.dms-header__search .dms-search__input { border-color: #3a3a3a; background: #161616; }
+.dms-header__search .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
+.dms-header__cats { margin-top: .6rem; border-top: 1px solid #222; }
+.dms-header__cats .dms-catbar a { color: var(--wp--preset--color--muted-on-ink); }
+.dms-header__cats .dms-catbar a:hover, .dms-header__cats .dms-catbar a[aria-current] { color: var(--wp--preset--color--paper); }
+@media (max-width: 1100px) {
+	.dms-header__search { order: 3; flex-basis: 100%; max-width: none; }
+	.dms-header__actions { margin-left: auto; }
+}
+
+/* Breadcrumbs inside a black band. */
+.has-ink-background-color .wc-block-breadcrumbs, .has-ink-background-color .wc-block-breadcrumbs a,
+.has-ink-background-color .woocommerce-breadcrumb, .has-ink-background-color .woocommerce-breadcrumb a { color: var(--wp--preset--color--muted-on-ink); }
+.has-ink-background-color .wc-block-breadcrumbs a:hover { color: var(--wp--preset--color--paper); }
+
+/* Welcome: words left, one product right. */
+.dms-hero__alt { margin-top: var(--wp--preset--spacing--40); font-size: .95rem; }
+.dms-hero__alt a { color: var(--wp--preset--color--paper); }
+.dms-hero .wp-block-divimagicshop-spotlight { max-width: 30rem; margin-left: auto; }
+@media (max-width: 781px) { .dms-hero__cols { row-gap: var(--wp--preset--spacing--50); } }
+
+/* Promises: four short reasons, one line each. */
+.dms-promises__row { gap: var(--wp--preset--spacing--40); }
+.dms-promise { margin: 0; }
+.dms-promises__row > .wp-block-column + .wp-block-column { border-left: 1px solid var(--wp--preset--color--line); padding-left: var(--wp--preset--spacing--40); }
+.dms-promise a { display: grid; gap: .15rem; color: inherit; text-decoration: none; line-height: 1.35; }
+.dms-promise strong { font-size: .92rem; }
+.dms-promise span { font-size: .82rem; color: var(--wp--preset--color--muted); }
+.dms-promise a:hover strong { color: var(--wp--preset--color--red); }
+@media (max-width: 781px) {
+	.dms-promises__row { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--wp--preset--spacing--30) !important; }
+	.dms-promises__row > .wp-block-column:nth-child(odd) { border-left: 0; padding-left: 0; }
+}
+
+/* Home: steady rhythm between the shop sections. */
+.home .wp-block-divimagicshop-product-grid + .wp-block-divimagicshop-product-grid { margin-top: var(--wp--preset--spacing--70); }
+
+/* Shop: filters on the left, products on the right. */
+.dms-shop-band .wp-block-query-title { font-size: var(--wp--preset--font-size--xx-large); }
+.dms-shop-band .wp-block-term-description { max-width: 60ch; margin-top: var(--wp--preset--spacing--30); }
+.dms-shop-band .wp-block-term-description p { margin: 0; }
+.dms-shop { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: var(--wp--preset--spacing--60); align-items: start; }
+.dms-shop > * { margin: 0 !important; }
+.dms-shop__aside { position: sticky; top: 1.5rem; max-height: calc(100vh - 3rem); overflow-y: auto; scrollbar-width: thin; padding-left: 1rem; margin-left: -1rem !important; }
+.dms-shop__main { display: grid; gap: var(--wp--preset--spacing--40); }
+.dms-shop__main > * { margin: 0 !important; }
+.dms-shop__toolbar { padding-bottom: .75rem; border-bottom: 1px solid var(--wp--preset--color--line); }
+.dms-shop__toolbar .woocommerce-result-count, .dms-shop__toolbar .wc-block-product-results-count { margin: 0; font-size: .875rem; color: var(--wp--preset--color--muted); }
+.dms-shop__toolbar .woocommerce-ordering, .dms-shop__toolbar .wc-block-catalog-sorting { margin: 0; }
+.dms-noresults { padding: var(--wp--preset--spacing--50); background: var(--wp--preset--color--smoke); }
+.dms-noresults > :first-child { margin-top: 0; }
+.dms-noresults > :last-child { margin-bottom: 0; }
+.wc-block-product-template .wc-block-components-product-sale-badge {
+	border: 0; border-radius: 0; padding: .3rem .55rem; margin: .6rem; background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper);
+	font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+@media (max-width: 900px) {
+	.dms-shop { grid-template-columns: minmax(0, 1fr); gap: var(--wp--preset--spacing--40); }
+	.dms-shop__aside { position: static; max-height: none; overflow: visible; padding-left: 0; margin-left: 0 !important; }
+}
+
+/* Pagination: squared numbers, the current page inverted. */
+.wp-block-query-pagination { margin-top: var(--wp--preset--spacing--50); gap: .35rem; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.wp-block-query-pagination-numbers { display: flex; gap: .35rem; }
+.wp-block-query-pagination .page-numbers, .wp-block-query-pagination-previous, .wp-block-query-pagination-next {
+	display: inline-grid; place-items: center; min-width: 2.6rem; height: 2.6rem; padding: 0 .8rem; margin: 0;
+	border: 1px solid var(--wp--preset--color--line); color: inherit; text-decoration: none; font-weight: 600;
+}
+.wp-block-query-pagination a:hover { border-color: var(--wp--preset--color--ink); color: inherit; }
+.wp-block-query-pagination .page-numbers.current { background: var(--wp--preset--color--ink); border-color: var(--wp--preset--color--ink); color: var(--wp--preset--color--paper); }
+.wp-block-query-pagination .page-numbers.dots { border-color: transparent; min-width: 0; padding: 0 .25rem; }

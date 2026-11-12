@@ -40,10 +40,15 @@ else, so the existing WordPress, uploads and plugins are left alone.
 ## Editing the design
 
 Appearance → Editor. Every page type is a template, the header and footer are template parts,
-and the home page is three patterns: **Curtain welcome**, **Category shelves**, **Latest tutorials**.
+and the home page is six patterns: **Curtain welcome** (with a product spotlight), **Why shop here**,
+**Shop by category**, **Just in and on sale**, **Category shelves**, **Latest tutorials**. The shop,
+category and search pages have a filter sidebar (**Shop filters** block) and the header a
+**Product search** and **Category bar**.
 
 - Shelves: the home page shows one shelf per product category automatically (WooCommerce's
   category order). To hand-pick, replace it with **Category shelf** blocks, one per category.
+- Spotlight: star a product (Products → ☆) to put it in the welcome; otherwise the newest one shows.
+- Category tiles use the category's image (Products → Categories), else its newest product's.
 - Colors and fonts: Styles in the Site Editor, or `theme.json`.
 - Changes made in the Site Editor are saved in the database and override the files here. To
   bring such a change into the repo, copy it from the editor (⋮ → Code editor) into the
