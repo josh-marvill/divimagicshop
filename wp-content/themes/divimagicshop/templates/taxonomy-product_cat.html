@@ -1,39 +1,59 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
 <!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="margin-top:0"><!-- wp:group {"tagName":"section","align":"full","className":"is-style-curtain","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"},"margin":{"top":"0","bottom":"var:preset|spacing|60"}}},"backgroundColor":"ink","textColor":"paper","layout":{"type":"constrained","contentSize":"1240px"}} -->
-<section class="wp-block-group alignfull is-style-curtain has-paper-color has-ink-background-color has-text-color has-background" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--60);padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:query-title {"type":"archive","showPrefix":false,"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}}} /-->
+<main class="wp-block-group" style="margin-top:0"><!-- wp:group {"tagName":"section","align":"full","className":"is-style-curtain dms-shop-band","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"},"margin":{"top":"0","bottom":"var:preset|spacing|50"}}},"backgroundColor":"ink","textColor":"paper","layout":{"type":"constrained","contentSize":"1240px"}} -->
+<section class="wp-block-group alignfull is-style-curtain dms-shop-band has-paper-color has-ink-background-color has-text-color has-background" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:woocommerce/breadcrumbs {"fontSize":"small"} /-->
+
+<!-- wp:query-title {"type":"archive","showPrefix":false,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"0"}}}} /-->
 
 <!-- wp:term-description {"textColor":"muted-on-ink"} /--></section>
 <!-- /wp:group -->
 
 <!-- wp:woocommerce/store-notices /-->
 
-<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
-<div class="wp-block-group alignwide"><!-- wp:woocommerce/catalog-sorting /--></div>
+<!-- wp:group {"align":"wide","className":"dms-shop","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide dms-shop"><!-- wp:group {"tagName":"aside","className":"dms-shop__aside","layout":{"type":"default"}} -->
+<aside class="wp-block-group dms-shop__aside"><!-- wp:divimagicshop/shop-filters /--></aside>
 <!-- /wp:group -->
 
-<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":{},"isProductCollectionBlock":true,"perPage":12,"pages":0,"offset":0,"postType":"product","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","dimensions":{"widthType":"fill","fixedWidth":""},"displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"convertedFromProducts":false,"queryContextIncludes":["collection"],"align":"wide"} -->
-<div class="wp-block-woocommerce-product-collection alignwide"><!-- wp:woocommerce/product-template -->
+<!-- wp:group {"className":"dms-shop__main","layout":{"type":"default"}} -->
+<div class="wp-block-group dms-shop__main"><!-- wp:group {"className":"dms-shop__toolbar","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group dms-shop__toolbar"><!-- wp:woocommerce/product-results-count /-->
+
+<!-- wp:woocommerce/catalog-sorting /--></div>
+<!-- /wp:group -->
+
+<!-- wp:divimagicshop/active-filters /-->
+
+<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":{},"isProductCollectionBlock":true,"perPage":12,"pages":0,"offset":0,"postType":"product","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","dimensions":{"widthType":"fill","fixedWidth":""},"displayLayout":{"type":"flex","columns":3,"shrinkColumns":true},"convertedFromProducts":false,"queryContextIncludes":["collection"]} -->
+<div class="wp-block-woocommerce-product-collection"><!-- wp:woocommerce/product-template -->
 <!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true} -->
-<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"right"} /-->
+<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"left"} /-->
 <!-- /wp:woocommerce/product-image -->
 <!-- wp:post-title {"level":3,"isLink":true,"style":{"spacing":{"margin":{"top":"0.6rem","bottom":"0.2rem"}}},"__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
 <!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->
 <!-- /wp:woocommerce/product-template -->
 
 <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
-<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-previous {"label":"Previous"} /-->
 <!-- wp:query-pagination-numbers /-->
-<!-- wp:query-pagination-next /-->
+<!-- wp:query-pagination-next {"label":"Next"} /-->
 <!-- /wp:query-pagination -->
 
 <!-- wp:woocommerce/product-collection-no-results -->
+<!-- wp:group {"className":"dms-noresults","layout":{"type":"default"}} -->
+<div class="wp-block-group dms-noresults"><!-- wp:heading {"level":2,"fontSize":"large"} -->
+<h2 class="wp-block-heading has-large-font-size">Nothing matches that.</h2>
+<!-- /wp:heading -->
+
 <!-- wp:paragraph -->
-<p>No tricks here yet. <a href="/shop/">See everything in the shop</a>.</p>
-<!-- /wp:paragraph -->
+<p>Try another word or price, or <a href="/shop/">see everything in the shop</a>.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 <!-- /wp:woocommerce/product-collection-no-results --></div>
-<!-- /wp:woocommerce/product-collection --></main>
+<!-- /wp:woocommerce/product-collection --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></main>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

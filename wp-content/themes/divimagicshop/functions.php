@@ -35,3 +35,6 @@ add_filter('woocommerce_product_tabs', function (array $tabs): array {
     return $tabs;
 }, 20);
 add_filter('woocommerce_product_description_heading', fn () => 'The trick');
+
+// Shop grids are three across beside the filters: twelve per page fills whole rows.
+add_filter('loop_shop_per_page', fn () => 12, 20);

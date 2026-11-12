@@ -79,8 +79,58 @@
 		save: function () { return null; },
 	});
 
-	// Blocks that show something about the post they sit in (a tutorial, a product).
-	['divimagicshop/faq-list', 'divimagicshop/tutorial-video', 'divimagicshop/tutorial-products', 'divimagicshop/product-tutorials']
+	registerBlockType('divimagicshop/product-grid', {
+		edit: function (props) {
+			var a = props.attributes;
+			return el('div', useBlockProps(),
+				el(InspectorControls, null,
+					el(PanelBody, { title: 'Products' },
+						el(SelectControl, {
+							label: 'Show', value: a.source,
+							options: [
+								{ label: 'Newest', value: 'new' },
+								{ label: 'On sale', value: 'sale' },
+								{ label: 'Featured (starred in Products)', value: 'featured' },
+							],
+							onChange: function (v) { props.setAttributes({ source: v }); },
+						}),
+						el(TextControl, {
+							label: 'Heading', value: a.title,
+							onChange: function (v) { props.setAttributes({ title: v }); },
+						}),
+						el(RangeControl, {
+							label: 'Products', min: 2, max: 24, value: a.count,
+							onChange: function (v) { props.setAttributes({ count: v }); },
+						})
+					)
+				),
+				preview('divimagicshop/product-grid', props)
+			);
+		},
+		save: function () { return null; },
+	});
+
+	registerBlockType('divimagicshop/product-search', {
+		edit: function (props) {
+			return el('div', useBlockProps(),
+				el(InspectorControls, null,
+					el(PanelBody, { title: 'Search' },
+						el(TextControl, {
+							label: 'Placeholder', value: props.attributes.placeholder,
+							onChange: function (v) { props.setAttributes({ placeholder: v }); },
+						})
+					)
+				),
+				preview('divimagicshop/product-search', props)
+			);
+		},
+		save: function () { return null; },
+	});
+
+	// Blocks that show something about the post they sit in (a tutorial, a product),
+	// or about the shop as a whole: a preview and no settings.
+	['divimagicshop/category-bar', 'divimagicshop/category-tiles', 'divimagicshop/spotlight',
+		'divimagicshop/shop-filters', 'divimagicshop/active-filters', 'divimagicshop/faq-list', 'divimagicshop/tutorial-video', 'divimagicshop/tutorial-products', 'divimagicshop/product-tutorials']
 		.forEach(function (name) {
 			registerBlockType(name, {
 				edit: function (props) {
