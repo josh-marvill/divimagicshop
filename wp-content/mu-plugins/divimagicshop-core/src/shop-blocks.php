@@ -498,3 +498,60 @@ function dms_render_active_filters(): string
 
     return '<ul class="wp-block-divimagicshop-active-filters dms-chips" aria-label="Filters in use">'.$html.'</ul>';
 }
+
+/* ---------------------------------------------------------------------------------------
+ * "Out of stock" tag: on every product card (shop grids, related products, our own rows)
+ * and on the product page beside the price.
+ * ------------------------------------------------------------------------------------ */
+
+function dms_out_of_stock_tag(string $extra = ''): string
+{
+    return '<span class="dms-badge dms-badge--out'.($extra !== '' ? ' '.$extra : '').'">Out of stock</span>';
+}
+
+function dms_block_product(WP_Block $block): ?WC_Product
+{
+    $id = (int) ($block->context['postId'] ?? 0);
+    $product = $id && function_exists('wc_get_product') ? wc_get_product($id) : null;
+
+    return $product instanceof WC_Product ? $product : null;
+}
+
+// Grid cards: the tag sits on the picture (top left), the picture dims, and it replaces any Sale badge.
+add_filter('render_block_woocommerce/product-image', function (string $html, array $parsed, WP_Block $block): string {
+    $product = dms_block_product($block);
+    if (! $product || $product->is_in_stock() || $html === '' || is_singular('product') && ! isset($block->context['query'])) {
+        return $html;
+    }
+    $html = preg_replace('/class="wc-block-components-product-image/', 'class="dms-is-out wc-block-components-product-image', $html, 1);
+    $end = strrpos($html, '</div>');
+
+    return $end === false ? $html : substr($html, 0, $end).dms_out_of_stock_tag().substr($html, $end);
+}, 10, 3);
+
+add_filter('render_block_woocommerce/product-sale-badge', function (string $html, array $parsed, WP_Block $block): string {
+    $product = dms_block_product($block);
+
+    return $product && ! $product->is_in_stock() ? '' : $html;
+}, 10, 3);
+
+// Product page: the tag right under the price.
+add_filter('render_block_woocommerce/product-price', function (string $html, array $parsed, WP_Block $block): string {
+    if (empty($parsed['attrs']['isDescendentOfSingleProductTemplate'])) {
+        return $html;
+    }
+    $product = dms_block_product($block) ?? (function_exists('wc_get_product') ? wc_get_product(get_the_ID()) : null);
+
+    return $product instanceof WC_Product && ! $product->is_in_stock()
+        ? $html.'<p class="dms-stock-tag">'.dms_out_of_stock_tag().'</p>'
+        : $html;
+}, 10, 3);
+
+// Product page gallery: no "Sale!" flash on a product nobody can buy, and the flash says "Sale" like the cards.
+add_filter('woocommerce_sale_flash', function (string $html, $post, $product): string {
+    if ($product instanceof WC_Product && ! $product->is_in_stock()) {
+        return '';
+    }
+
+    return '<span class="onsale dms-badge">Sale</span>';
+}, 10, 3);

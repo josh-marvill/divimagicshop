@@ -67,3 +67,10 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
   underlines rather than red text (red-on-black small text was ~3.7:1).
 - The hero's red italic "delivered." stays: the detector flags it as an italic serif display; it is
   the one deliberate accent.
+
+**Out of stock (2026-11-12)**
+- Every product card (shop/category/search grids, related products, tutorial "What you'll need"
+  rows) shows a black "Out of stock" tag on the picture, top left, in place of any Sale badge; the
+  picture dims so available products lead. The product page shows the tag under the price.
+- WooCommerce's gallery "Sale!" circle is restyled as the site's red "Sale" badge and hidden when
+  the product is out of stock.

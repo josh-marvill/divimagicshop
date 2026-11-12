@@ -94,7 +94,7 @@ function dms_product_card(WC_Product $product): string
     $link = esc_url($product->get_permalink());
     $image = $product->get_image('woocommerce_thumbnail', ['class' => 'dms-card__img', 'loading' => 'lazy']);
     $badge = match (true) {
-        ! $product->is_in_stock() => '<span class="dms-badge dms-badge--out">Sold out</span>',
+        ! $product->is_in_stock() => dms_out_of_stock_tag(),
         $product->is_on_sale() => '<span class="dms-badge">Sale</span>',
         default => '',
     };

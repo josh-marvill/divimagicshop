@@ -1,7 +1,7 @@
 /*
 Theme Name: Divimagicshop
 Description: Block theme for Divimagicshop. Black curtain bands with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
-Version: 1.3.7
+Version: 1.3.8
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -303,3 +303,6 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 	.dms-card-grid .wp-block-post-template { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
 	.dms-card-grid .wp-block-post-title { font-size: 1.15rem; }
 }
+
+/* Product page: our tag under the price says it; WooCommerce's line in the form would repeat it. */
+.dms-buy .wp-block-add-to-cart-form > .stock.out-of-stock { display: none; }
