@@ -95,3 +95,13 @@ add_action('save_post_dms_tutorial', function (int $postId) {
 
     dms_set_tutorial_products($postId, array_map('intval', (array) wp_unslash($_POST['dms_products'] ?? [])));
 });
+
+// A tutorial without a featured image still shows a video frame in lists (the theme draws the play mark).
+add_filter('render_block_core/post-featured-image', function (string $html, array $block, WP_Block $instance): string {
+    $postId = (int) ($instance->context['postId'] ?? 0);
+    if (trim($html) !== '' || ! $postId || get_post_type($postId) !== 'dms_tutorial' || is_singular('dms_tutorial')) {
+        return $html;
+    }
+
+    return '<a class="dms-tut-frame" href="'.esc_url(get_permalink($postId)).'" aria-label="'.esc_attr(get_the_title($postId)).'"></a>';
+}, 10, 3);
