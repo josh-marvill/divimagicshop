@@ -40,13 +40,15 @@ else, so the existing WordPress, uploads and plugins are left alone.
 ## Editing the design
 
 Appearance → Editor. Every page type is a template, the header and footer are template parts,
-and the home page is six patterns: **Curtain welcome** (with a product spotlight), **Why shop here**,
-**Shop by category**, **Just in and on sale**, **Category shelves**, **Latest tutorials**. The shop,
+and the home page is five patterns: **Curtain welcome** (with a product spotlight), **Why shop here**,
+**Shop by category**, **Just in and on sale**, **Latest tutorials**. The shop,
 category and search pages have a filter sidebar (**Shop filters** block) and the header a
 **Product search** and **Category bar**.
 
-- Shelves: the home page shows one shelf per product category automatically (WooCommerce's
-  category order). To hand-pick, replace it with **Category shelf** blocks, one per category.
+- Category tiles: the home page shows the first 8 top-level categories in WooCommerce's category
+  order (Products → Categories, drag to reorder); change the number in the block's settings.
+- Shelves: the **Category shelves** pattern / **Category shelf** block (a row of products from a
+  category) are no longer on the home page but can be added to any page.
 - Spotlight: star a product (Products → ☆) to put it in the welcome; otherwise the newest one shows.
 - Category tiles use the category's image (Products → Categories), else its newest product's.
 - Colors and fonts: Styles in the Site Editor, or `theme.json`.

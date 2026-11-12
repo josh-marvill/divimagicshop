@@ -38,8 +38,9 @@ function dms_register_shop_blocks(): void
     ]);
     register_block_type('divimagicshop/category-tiles', $common + [
         'title' => 'Category tiles',
-        'description' => 'A picture tile for each top-level category (its image, or its newest product\'s).',
+        'description' => 'Picture tiles for the first top-level categories, in WooCommerce\'s category order (its image, or its newest product\'s).',
         'icon' => 'grid-view',
+        'attributes' => ['count' => ['type' => 'integer', 'default' => 8]],
         'render_callback' => 'dms_render_category_tiles',
     ]);
     register_block_type('divimagicshop/spotlight', $common + [
@@ -299,12 +300,12 @@ function dms_render_category_bar(): string
     return '<nav class="wp-block-divimagicshop-category-bar dms-catbar" aria-label="Product categories"><ul>'.$items.'</ul></nav>';
 }
 
-function dms_render_category_tiles(): string
+function dms_render_category_tiles(array $attributes = []): string
 {
     if (! function_exists('wc_get_products')) {
         return dms_editor_placeholder('Category tiles need WooCommerce.');
     }
-    $terms = dms_top_categories();
+    $terms = array_slice(dms_top_categories(), 0, max(1, (int) ($attributes['count'] ?? 8)));
     if (! $terms) {
         return dms_editor_placeholder('Category tiles appear here once products have categories.');
     }

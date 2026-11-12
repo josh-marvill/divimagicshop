@@ -110,6 +110,23 @@
 		save: function () { return null; },
 	});
 
+	registerBlockType('divimagicshop/category-tiles', {
+		edit: function (props) {
+			return el('div', useBlockProps(),
+				el(InspectorControls, null,
+					el(PanelBody, { title: 'Tiles' },
+						el(RangeControl, {
+							label: 'Categories (first ones in WooCommerce\'s category order)', min: 2, max: 24, value: props.attributes.count,
+							onChange: function (v) { props.setAttributes({ count: v }); },
+						})
+					)
+				),
+				preview('divimagicshop/category-tiles', props)
+			);
+		},
+		save: function () { return null; },
+	});
+
 	registerBlockType('divimagicshop/product-search', {
 		edit: function (props) {
 			return el('div', useBlockProps(),
@@ -129,7 +146,7 @@
 
 	// Blocks that show something about the post they sit in (a tutorial, a product),
 	// or about the shop as a whole: a preview and no settings.
-	['divimagicshop/category-bar', 'divimagicshop/category-tiles', 'divimagicshop/spotlight',
+	['divimagicshop/category-bar', 'divimagicshop/spotlight',
 		'divimagicshop/shop-filters', 'divimagicshop/active-filters', 'divimagicshop/faq-list', 'divimagicshop/tutorial-video', 'divimagicshop/tutorial-products', 'divimagicshop/product-tutorials']
 		.forEach(function (name) {
 			registerBlockType(name, {
