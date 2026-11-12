@@ -209,13 +209,3 @@ a.dms-chip:hover { border-color: var(--wp--preset--color--red, #d4111e); color: 
 .dms-chip__x::before, .dms-chip__x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 100%; height: 1.5px; background: currentColor; transform: translate(-50%, -50%) rotate(45deg); }
 .dms-chip__x::after { transform: translate(-50%, -50%) rotate(-45deg); }
 .dms-chips__clear { font-size: .82rem; color: var(--wp--preset--color--muted, #6b6b6b); }
-
-/* Category links: one wrapping line of names, for the welcome band. */
-.dms-catlinks { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
-.dms-catlinks li { margin: 0; }
-.dms-catlinks a {
-	display: inline-block; padding: .5rem .85rem; border: 1px solid currentColor; color: inherit; text-decoration: none;
-	font: 600 .85rem/1.2 var(--wp--preset--font-family--sans, sans-serif);
-	transition: background-color .2s, color .2s, border-color .2s;
-}
-.dms-catlinks a:hover { background: var(--wp--preset--color--paper, #fff); border-color: var(--wp--preset--color--paper, #fff); color: var(--wp--preset--color--ink, #0b0b0b); }

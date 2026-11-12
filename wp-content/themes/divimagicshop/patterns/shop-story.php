@@ -10,7 +10,7 @@
 <section class="wp-block-group alignfull dms-story" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60","top":"var:preset|spacing|40"}}}} -->
 <div class="wp-block-columns"><!-- wp:column {"width":"58%"} -->
 <div class="wp-block-column" style="flex-basis:58%"><!-- wp:heading {"className":"dms-story__statement"} -->
-<h2 class="wp-block-heading dms-story__statement">Every trick here has been <em>performed</em> before it was put on a shelf.</h2>
+<h2 class="wp-block-heading dms-story__statement">Every trick here has been performed before it was put on a shelf.</h2>
 <!-- /wp:heading --></div>
 <!-- /wp:column -->
 

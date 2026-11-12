@@ -115,11 +115,6 @@
 			return el('div', useBlockProps(),
 				el(InspectorControls, null,
 					el(PanelBody, { title: 'Tiles' },
-						el(SelectControl, {
-							label: 'Show as', value: props.attributes.layout,
-							options: [{ label: 'Picture tiles', value: 'tiles' }, { label: 'A line of links', value: 'links' }],
-							onChange: function (v) { props.setAttributes({ layout: v }); },
-						}),
 						el(RangeControl, {
 							label: 'Categories (first ones in WooCommerce\'s category order)', min: 2, max: 24, value: props.attributes.count,
 							onChange: function (v) { props.setAttributes({ count: v }); },

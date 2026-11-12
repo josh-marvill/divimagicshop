@@ -40,10 +40,7 @@ function dms_register_shop_blocks(): void
         'title' => 'Category tiles',
         'description' => 'Picture tiles for the first top-level categories, in WooCommerce\'s category order (its image, or its newest product\'s).',
         'icon' => 'grid-view',
-        'attributes' => [
-            'count' => ['type' => 'integer', 'default' => 8],
-            'layout' => ['type' => 'string', 'default' => 'tiles'], // tiles | links
-        ],
+        'attributes' => ['count' => ['type' => 'integer', 'default' => 8]],
         'render_callback' => 'dms_render_category_tiles',
     ]);
     register_block_type('divimagicshop/spotlight', $common + [
@@ -311,18 +308,6 @@ function dms_render_category_tiles(array $attributes = []): string
     $terms = array_slice(dms_top_categories(), 0, max(1, (int) ($attributes['count'] ?? 8)));
     if (! $terms) {
         return dms_editor_placeholder('Category tiles appear here once products have categories.');
-    }
-
-    if (($attributes['layout'] ?? 'tiles') === 'links') {
-        $links = '';
-        foreach ($terms as $term) {
-            $link = get_term_link($term);
-            if (! is_wp_error($link)) {
-                $links .= '<li><a href="'.esc_url($link).'">'.esc_html($term->name).'</a></li>';
-            }
-        }
-
-        return '<ul class="wp-block-divimagicshop-category-tiles dms-catlinks" aria-label="Shop by category">'.$links.'</ul>';
     }
 
     $tiles = '';

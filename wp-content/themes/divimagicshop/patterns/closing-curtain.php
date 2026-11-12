@@ -10,7 +10,7 @@
 <section class="wp-block-group alignfull dms-closing has-paper-color has-ink-background-color has-text-color has-background" style="border-top-color:var(--wp--preset--color--red);border-top-width:4px;margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"bottom","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60","top":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-bottom"><!-- wp:column {"verticalAlignment":"bottom","width":"55%"} -->
 <div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:55%"><!-- wp:heading {"className":"dms-closing__title"} -->
-<h2 class="wp-block-heading dms-closing__title">Your next trick is <em>in the shop.</em></h2>
+<h2 class="wp-block-heading dms-closing__title">Your next trick is in the shop.</h2>
 <!-- /wp:heading -->
 
 <!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
