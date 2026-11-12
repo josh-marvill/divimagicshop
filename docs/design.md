@@ -35,7 +35,7 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
   (the current one underlined in red, sitting on the header's rule on purpose).
 - Home (Josh, 2026-11-12): no product grids — every product lives in the shop (~600 of them).
   The home page is content with many ways into the shop: welcome (Browse the shop + a tutorial
-  button + a line of category links) → reasons to buy → shop story → "Where are you on stage?"
+  button) → reasons to buy → shop story → "Where are you on stage?"
   (three levels, each linking to the shop) → tutorials → closing black band (shop button + search).
   All home copy is placeholder. The spotlight, product-grid, category-tile and shelf blocks/patterns
   stay available in the editor.
@@ -48,3 +48,8 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
 - Badges on product cards: Sale (red), Sold out (ink). No eyebrow labels above headings; the
   promise strip uses hairline dividers, not colored side rules.
 - The promise-strip wording is placeholder: check it against the real shipping/checkout before launch.
+
+**Distill (critique 2026-11-12, 25/36)**
+- The welcome's category buttons are gone: they repeated the header's category bar on the same
+  screen and would have shown only 8 of 20+ real categories.
+- The red italic accent is the hero's "delivered." only; the story and closing headings are roman.
