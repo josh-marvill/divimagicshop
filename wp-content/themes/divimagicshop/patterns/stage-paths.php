@@ -3,7 +3,7 @@
  * Title: Where are you on stage?
  * Slug: divimagicshop/stage-paths
  * Categories: divimagicshop
- * Description: Three rows (starting out, performing, working pro), each with a short note and a link to the shop. Placeholder text.
+ * Description: Three rows (starting out, performing, working pro), each with a short note and a link to the shop. Placeholder text. Point a row's link at a category once the catalogue has one for that level.
  */
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"dms-paths","style":{"spacing":{"padding":{"top":"0","bottom":"var:preset|spacing|30"}}},"layout":{"type":"constrained","contentSize":"1240px"}} -->
@@ -17,11 +17,11 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"dms-path__text"} -->
-<p class="dms-path__text">Self-working tricks and simple props that build confidence. Learn one tonight, show it tomorrow.</p>
+<p class="dms-path__text">Tricks that do the work for you, no sleight of hand needed, and simple props that build confidence. Learn one tonight, show it tomorrow.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"dms-path__link"} -->
-<p class="dms-path__link"><a class="dms-more" href="/shop/">Shop first tricks</a></p>
+<p class="dms-path__link"><a class="dms-more" href="/shop/">Browse the shop</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -35,7 +35,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"dms-path__link"} -->
-<p class="dms-path__link"><a class="dms-more" href="/shop/">Shop for your set</a></p>
+<p class="dms-path__link"><a class="dms-more" href="/shop/">Browse the shop</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -49,7 +49,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"dms-path__link"} -->
-<p class="dms-path__link"><a class="dms-more" href="/shop/">Shop stage gear</a></p>
+<p class="dms-path__link"><a class="dms-more" href="/shop/">Browse the shop</a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

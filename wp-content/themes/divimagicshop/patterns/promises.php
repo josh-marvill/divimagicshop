@@ -16,19 +16,19 @@
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:paragraph {"className":"dms-promise"} -->
-<p class="dms-promise"><a href="/shipping-returns/"><strong>Shipping &amp; returns</strong><span>Clear, simple policies</span></a></p>
+<p class="dms-promise"><a href="/shipping-returns/"><strong>Shipping &amp; returns</strong><span>How we send it, and how to send it back</span></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:paragraph {"className":"dms-promise"} -->
-<p class="dms-promise"><a href="/faq/"><strong>Secure checkout</strong><span>Your payment stays private</span></a></p>
+<p class="dms-promise"><a href="/terms/"><strong>Secure checkout</strong><span>Card details are encrypted</span></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:paragraph {"className":"dms-promise"} -->
-<p class="dms-promise"><a href="/contact/"><strong>Questions?</strong><span>Read the FAQ or write to us</span></a></p>
+<p class="dms-promise"><a href="/faq/"><strong>Questions?</strong><span>Answers in the FAQ</span></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></section>
