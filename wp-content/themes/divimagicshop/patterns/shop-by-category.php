@@ -17,5 +17,5 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:divimagicshop/category-tiles /--></section>
+<!-- wp:divimagicshop/category-tiles {"count":8} /--></section>
 <!-- /wp:group -->
