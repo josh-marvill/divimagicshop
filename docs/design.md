@@ -33,12 +33,12 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
 **Shop pass (2026-11-12)** — "it looks like a styled list of products"
 - Header: wordmark · product search · links + cart, then a bar with every top-level category
   (the current one underlined in red, sitting on the header's rule on purpose).
-- Home: welcome with one featured product beside the headline (first product starred as featured,
-  else the newest) → four short reasons to buy → category picture tiles → "Just in" → "On sale"
-  (hidden when nothing is) → tutorials. The live catalogue has ~600 products, so the home page
-  no longer has a shelf per category (it grew with every category); the first 8 category tiles,
-  in WooCommerce's category order, lead into the shop instead. The Category shelves pattern and
-  blocks are still available in the editor.
+- Home (Josh, 2026-11-12): no product grids — every product lives in the shop (~600 of them).
+  The home page is content with many ways into the shop: welcome (Browse the shop + a tutorial
+  button + a line of category links) → reasons to buy → shop story → "Where are you on stage?"
+  (three levels, each linking to the shop) → tutorials → closing black band (shop button + search).
+  All home copy is placeholder. The spotlight, product-grid, category-tile and shelf blocks/patterns
+  stay available in the editor.
 - Shop, category and product-search pages share one layout: filters on the left (categories with
   counts, price ranges, in stock only), results count + sorting, removable filter chips, 3 across,
   12 per page, squared pagination. On phones the filters fold into one "Categories & filters" button.

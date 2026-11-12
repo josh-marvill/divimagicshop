@@ -1,7 +1,7 @@
 /*
 Theme Name: Divimagicshop
 Description: Block theme for Divimagicshop. Black curtain bands with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
-Version: 1.2.0
+Version: 1.3.2
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -156,11 +156,6 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .has-ink-background-color .woocommerce-breadcrumb, .has-ink-background-color .woocommerce-breadcrumb a { color: var(--wp--preset--color--muted-on-ink); }
 .has-ink-background-color .wc-block-breadcrumbs a:hover { color: var(--wp--preset--color--paper); }
 
-/* Welcome: words left, one product right. */
-.dms-hero__alt { margin-top: var(--wp--preset--spacing--40); font-size: .95rem; }
-.dms-hero__alt a { color: var(--wp--preset--color--paper); }
-.dms-hero .wp-block-divimagicshop-spotlight { max-width: 30rem; margin-left: auto; }
-@media (max-width: 781px) { .dms-hero__cols { row-gap: var(--wp--preset--spacing--50); } }
 
 /* Promises: four short reasons, one line each. */
 .dms-promises__row { gap: var(--wp--preset--spacing--40); }
@@ -175,8 +170,6 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 	.dms-promises__row > .wp-block-column:nth-child(odd) { border-left: 0; padding-left: 0; }
 }
 
-/* Home: steady rhythm between the shop sections. */
-.home .wp-block-divimagicshop-product-grid + .wp-block-divimagicshop-product-grid { margin-top: var(--wp--preset--spacing--70); }
 
 /* Shop: filters on the left, products on the right. */
 .dms-shop-band .wp-block-query-title { font-size: var(--wp--preset--font-size--xx-large); }
@@ -212,3 +205,42 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .wp-block-query-pagination a:hover { border-color: var(--wp--preset--color--ink); color: inherit; }
 .wp-block-query-pagination .page-numbers.current { background: var(--wp--preset--color--ink); border-color: var(--wp--preset--color--ink); color: var(--wp--preset--color--paper); }
 .wp-block-query-pagination .page-numbers.dots { border-color: transparent; min-width: 0; padding: 0 .25rem; }
+
+/* ---- Home (1.3): content and routes into the shop, no product grids ---- */
+
+/* Welcome: second button is an outline on the black band. */
+.dms-hero__intro .dms-hero__lede { max-width: 44ch; }
+.dms-hero .is-style-outline .wp-block-button__link { background: transparent; color: var(--wp--preset--color--paper); border: 1px solid var(--wp--preset--color--paper); padding-block: calc(.8rem - 1px); }
+.dms-hero .is-style-outline .wp-block-button__link:hover, .dms-hero .is-style-outline .wp-block-button__link:focus-visible { background: var(--wp--preset--color--paper); color: var(--wp--preset--color--ink); }
+.dms-hero__cats { padding-top: var(--wp--preset--spacing--40); border-top: 1px solid #262626; }
+.dms-hero__cats-label { margin: 0 0 .75rem; font-size: .875rem; }
+
+/* Story: one large statement beside the explanation. */
+.dms-story__statement { margin: 0; font-size: clamp(2rem, 4.2vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; }
+.dms-story__statement em { font-weight: 500; }
+.dms-story__body p { margin: 0 0 1em; max-width: 46ch; color: var(--wp--preset--color--muted); }
+.dms-story__body .dms-story__cta { margin-top: var(--wp--preset--spacing--40); color: inherit; }
+
+/* Where are you on stage: three ruled rows, title · note · link. */
+.dms-paths .dms-path {
+	display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 12rem; gap: var(--wp--preset--spacing--40);
+	align-items: baseline; margin-block: 0 !important; padding: var(--wp--preset--spacing--40) 0; border-top: 1px solid var(--wp--preset--color--ink);
+}
+.dms-paths .dms-path:last-child { border-bottom: 1px solid var(--wp--preset--color--ink); }
+.dms-path > * { margin: 0 !important; }
+.dms-path__title { font-size: clamp(1.5rem, 2.6vw, 2.1rem); }
+.dms-path__text { color: var(--wp--preset--color--muted); max-width: 48ch; }
+.dms-path__link { justify-self: end; }
+@media (max-width: 1000px) {
+	.dms-paths .dms-path { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+	.dms-path__link { justify-self: start; }
+	.dms-path__link { margin-top: .25rem !important; }
+}
+
+/* Closing curtain. */
+.dms-closing__title { margin: 0; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.025em; }
+.dms-closing__title em { font-weight: 500; color: var(--wp--preset--color--red); }
+.dms-closing__hint { margin: 0 0 .75rem; font-size: .875rem; }
+.dms-closing .dms-search__input { border-color: #3a3a3a; background: #161616; }
+.dms-closing .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
+.home .wp-site-blocks > footer .dms-footer { border-top: 1px solid #222; }
