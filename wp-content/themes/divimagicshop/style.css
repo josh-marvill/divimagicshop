@@ -1,7 +1,7 @@
 /*
 Theme Name: Divimagicshop
 Description: Block theme for Divimagicshop. Black curtain bands with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
-Version: 1.3.4
+Version: 1.3.5
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -23,7 +23,7 @@ a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
 /* ---- The curtain: black band, red bottom edge ---- */
 .is-style-curtain { border-bottom: 4px solid var(--wp--preset--color--red); }
 .is-style-curtain p:not(.dms-wordmark) a { color: var(--wp--preset--color--paper); }
-.is-style-curtain p:not(.dms-wordmark) a:hover { color: var(--wp--preset--color--red); }
+.is-style-curtain p:not(.dms-wordmark) a:hover { color: var(--wp--preset--color--paper); text-decoration: underline; }
 .wp-block-navigation a, .dms-wordmark a { text-decoration: none; }
 
 /* Bodoni's display hairlines vanish at large sizes on screen: pin a sturdier optical size. */
@@ -39,14 +39,14 @@ a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .dms-wordmark a { color: var(--wp--preset--color--paper); text-decoration: none; }
 .dms-wordmark .dms-red { color: var(--wp--preset--color--red); }
 .dms-header .wp-block-navigation a { text-decoration: none; }
-.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--red); }
+.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--paper); text-decoration: underline; text-underline-offset: .35em; }
 .dms-header .wc-block-mini-cart__button { color: var(--wp--preset--color--paper); padding: .5rem; }
 .dms-header .wc-block-mini-cart__badge { background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper); border-color: var(--wp--preset--color--ink); }
 
 /* ---- Footer ---- */
 .dms-footer__nav { font-size: .875rem; }
 .dms-footer__nav a { color: var(--wp--preset--color--paper); text-decoration: none; }
-.dms-footer__nav a:hover { color: var(--wp--preset--color--red); }
+.dms-footer__nav a:hover { color: var(--wp--preset--color--paper); text-decoration: underline; text-underline-offset: .35em; }
 .dms-footer__legal { margin-top: var(--wp--preset--spacing--50); font-size: .8rem; }
 
 /* ---- Section titles and "more" links (shared with the shop blocks) ---- */
@@ -142,7 +142,7 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-header__main { row-gap: .9rem; }
 .dms-header__search { flex: 1 1 18rem; max-width: 30rem; margin-inline: auto; }
 .dms-header__search .dms-search__input { border-color: #3a3a3a; background: #161616; }
-.dms-header__search .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
+.dms-header__search .dms-search__input:focus-visible { border-color: var(--wp--preset--color--paper); }
 .dms-header__cats { margin-top: .6rem; border-top: 1px solid #222; }
 .dms-header__cats .dms-catbar a { color: var(--wp--preset--color--muted-on-ink); }
 .dms-header__cats .dms-catbar a:hover, .dms-header__cats .dms-catbar a[aria-current] { color: var(--wp--preset--color--paper); }
@@ -238,7 +238,7 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-closing__title { margin: 0; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.025em; }
 .dms-closing__hint { margin: 0 0 .75rem; font-size: .875rem; }
 .dms-closing .dms-search__input { border-color: #3a3a3a; background: #161616; }
-.dms-closing .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
+.dms-closing .dms-search__input:focus-visible { border-color: var(--wp--preset--color--paper); }
 .home .wp-site-blocks > footer .dms-footer { border-top: 1px solid #222; }
 
 /* Phone menu: shopping first, then the information pages, left-aligned and large.
@@ -278,3 +278,7 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-card-grid .wp-block-post:hover .wp-block-post-featured-image::after, .dms-card-grid .wp-block-post:hover .dms-tut-frame::after { transform: scale(1.08); }
 .dms-tut-frame { display: block; margin: 0 0 var(--wp--preset--spacing--30); }
 :root { --dms-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 3.5v13l11-6.5z' fill='white'/%3E%3C/svg%3E"); }
+
+/* Focus inside black bands: a paper ring (the red one vanished against red buttons). */
+.has-ink-background-color :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible { outline-color: var(--wp--preset--color--paper); }
+.dms-search__input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
