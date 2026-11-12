@@ -1,7 +1,7 @@
 /*
 Theme Name: Divimagicshop
 Description: Block theme for Divimagicshop. Black curtain bands with a red edge, white shelves of products. Every page is a template and every section a pattern, editable in Appearance → Editor.
-Version: 1.3.3
+Version: 1.3.7
 Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
@@ -23,7 +23,7 @@ a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
 /* ---- The curtain: black band, red bottom edge ---- */
 .is-style-curtain { border-bottom: 4px solid var(--wp--preset--color--red); }
 .is-style-curtain p:not(.dms-wordmark) a { color: var(--wp--preset--color--paper); }
-.is-style-curtain p:not(.dms-wordmark) a:hover { color: var(--wp--preset--color--red); }
+.is-style-curtain p:not(.dms-wordmark) a:hover { color: var(--wp--preset--color--paper); text-decoration: underline; }
 .wp-block-navigation a, .dms-wordmark a { text-decoration: none; }
 
 /* Bodoni's display hairlines vanish at large sizes on screen: pin a sturdier optical size. */
@@ -39,14 +39,14 @@ a { text-underline-offset: .2em; text-decoration-thickness: 1px; }
 .dms-wordmark a { color: var(--wp--preset--color--paper); text-decoration: none; }
 .dms-wordmark .dms-red { color: var(--wp--preset--color--red); }
 .dms-header .wp-block-navigation a { text-decoration: none; }
-.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--red); }
+.dms-header .wp-block-navigation a:hover { color: var(--wp--preset--color--paper); text-decoration: underline; text-underline-offset: .35em; }
 .dms-header .wc-block-mini-cart__button { color: var(--wp--preset--color--paper); padding: .5rem; }
 .dms-header .wc-block-mini-cart__badge { background: var(--wp--preset--color--red); color: var(--wp--preset--color--paper); border-color: var(--wp--preset--color--ink); }
 
 /* ---- Footer ---- */
 .dms-footer__nav { font-size: .875rem; }
 .dms-footer__nav a { color: var(--wp--preset--color--paper); text-decoration: none; }
-.dms-footer__nav a:hover { color: var(--wp--preset--color--red); }
+.dms-footer__nav a:hover { color: var(--wp--preset--color--paper); text-decoration: underline; text-underline-offset: .35em; }
 .dms-footer__legal { margin-top: var(--wp--preset--spacing--50); font-size: .8rem; }
 
 /* ---- Section titles and "more" links (shared with the shop blocks) ---- */
@@ -142,7 +142,7 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-header__main { row-gap: .9rem; }
 .dms-header__search { flex: 1 1 18rem; max-width: 30rem; margin-inline: auto; }
 .dms-header__search .dms-search__input { border-color: #3a3a3a; background: #161616; }
-.dms-header__search .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
+.dms-header__search .dms-search__input:focus-visible { border-color: var(--wp--preset--color--paper); }
 .dms-header__cats { margin-top: .6rem; border-top: 1px solid #222; }
 .dms-header__cats .dms-catbar a { color: var(--wp--preset--color--muted-on-ink); }
 .dms-header__cats .dms-catbar a:hover, .dms-header__cats .dms-catbar a[aria-current] { color: var(--wp--preset--color--paper); }
@@ -165,7 +165,7 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-promise strong { font-size: .92rem; }
 .dms-promise span { font-size: .82rem; color: var(--wp--preset--color--muted); }
 .dms-promise a:hover strong { color: var(--wp--preset--color--red); }
-@media (max-width: 781px) {
+@media (max-width: 1000px) {
 	.dms-promises__row { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--wp--preset--spacing--30) !important; }
 	.dms-promises__row > .wp-block-column:nth-child(odd) { border-left: 0; padding-left: 0; }
 }
@@ -238,5 +238,68 @@ main.wp-block-group { padding-bottom: var(--wp--preset--spacing--70); }
 .dms-closing__title { margin: 0; font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.025em; }
 .dms-closing__hint { margin: 0 0 .75rem; font-size: .875rem; }
 .dms-closing .dms-search__input { border-color: #3a3a3a; background: #161616; }
-.dms-closing .dms-search__input:focus { border-color: var(--wp--preset--color--paper); outline: none; }
+.dms-closing .dms-search__input:focus-visible { border-color: var(--wp--preset--color--paper); }
 .home .wp-site-blocks > footer .dms-footer { border-top: 1px solid #222; }
+
+/* Phone menu: shopping first, then the information pages, left-aligned and large.
+   "Shop all" only shows inside the menu; on wider screens the category bar has it. */
+.dms-header .dms-nav-shop { display: none; }
+.dms-header .is-menu-open .dms-nav-shop { display: flex; }
+.dms-header .wp-block-navigation__responsive-container.is-menu-open { padding: var(--wp--preset--spacing--40) clamp(1rem, 4vw, 2.5rem); }
+.dms-header .is-menu-open .wp-block-navigation__responsive-container-content { align-items: flex-start !important; padding-top: var(--wp--preset--spacing--60); }
+.dms-header .is-menu-open .wp-block-navigation__container { align-items: flex-start !important; gap: 1.1rem !important; }
+.dms-header .is-menu-open .wp-block-navigation-item__content { font-family: var(--wp--preset--font-family--serif); font-size: 2rem; font-weight: 600; letter-spacing: -0.01em; text-transform: none; }
+.dms-header .is-menu-open .dms-nav-shop .wp-block-navigation-item__content { color: var(--wp--preset--color--red); }
+
+/* Category bar on phones: a wider fade at the end says "there's more, swipe". */
+@media (max-width: 600px) {
+	.dms-header__cats .dms-catbar { -webkit-mask: linear-gradient(90deg, #000 75%, transparent); mask: linear-gradient(90deg, #000 75%, transparent); }
+	.dms-header__cats .dms-catbar ul { padding-right: 4rem; }
+}
+
+/* Welcome art: a fanned hand of cards. It opens once on arrival, from a visible closed stack. */
+.dms-fan { margin: 0; max-width: 26rem; margin-inline: auto; }
+.dms-fan svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dms-fan__card { transform-box: view-box; transform-origin: 210px 400px; transform: rotate(var(--a)); }
+@media (prefers-reduced-motion: no-preference) {
+	.dms-fan__card { animation: dms-fan-open 1.1s cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(.25s + var(--i) * 60ms); }
+	@keyframes dms-fan-open { from { transform: rotate(0deg); } }
+}
+@media (max-width: 781px) { .dms-hero__art { display: none; } }
+
+/* Tutorial cards: every card reads as a video, with or without a featured image. */
+.dms-card-grid .wp-block-post-featured-image, .dms-tut-frame { position: relative; aspect-ratio: 16 / 9; background: var(--wp--preset--color--ink); }
+.dms-card-grid .wp-block-post-featured-image a { display: block; height: 100%; }
+.dms-card-grid .wp-block-post-featured-image::after, .dms-tut-frame::after {
+	content: ""; position: absolute; left: 50%; top: 50%; width: 3.25rem; height: 3.25rem; margin: -1.625rem 0 0 -1.625rem; pointer-events: none;
+	border-radius: 50%; background: var(--wp--preset--color--red) var(--dms-play) 56% 50% / 38% no-repeat;
+	transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+.dms-card-grid .wp-block-post:hover .wp-block-post-featured-image::after, .dms-card-grid .wp-block-post:hover .dms-tut-frame::after { transform: scale(1.08); }
+.dms-tut-frame { display: block; margin: 0 0 var(--wp--preset--spacing--30); }
+:root { --dms-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 3.5v13l11-6.5z' fill='white'/%3E%3C/svg%3E"); }
+
+/* Focus inside black bands: a paper ring (the red one vanished against red buttons). */
+.has-ink-background-color :where(a, button, summary, input, select, textarea, [tabindex]):focus-visible { outline-color: var(--wp--preset--color--paper); }
+.dms-search__input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Phones: tutorial cards become compact rows (frame beside the title) instead of three tall blocks. */
+@media (max-width: 600px) {
+	.dms-card-grid .wp-block-post { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); column-gap: 1rem; align-items: start; }
+	.dms-card-grid .wp-block-post > .wp-block-post-featured-image, .dms-card-grid .wp-block-post > .dms-tut-frame { grid-row: span 2; margin: 0; }
+	.dms-card-grid .wp-block-post .wp-block-post-title { font-size: 1.1rem; }
+	.dms-card-grid .wp-block-post-featured-image::after, .dms-tut-frame::after { width: 2rem; height: 2rem; margin: -1rem 0 0 -1rem; }
+}
+
+/* Story: below 1000px the statement sits above the explanation, so no white hole beside it. */
+@media (max-width: 1000px) {
+	.dms-story .wp-block-columns { flex-wrap: wrap !important; }
+	.dms-story .wp-block-column { flex-basis: 100% !important; }
+	.dms-story__statement { max-width: 20ch; }
+}
+
+/* Tablets: tutorials stay three across rather than two plus an orphan. */
+@media (min-width: 601px) and (max-width: 1000px) {
+	.dms-card-grid .wp-block-post-template { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+	.dms-card-grid .wp-block-post-title { font-size: 1.15rem; }
+}

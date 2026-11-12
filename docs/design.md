@@ -53,3 +53,17 @@ jlmagic-storefront plugin. No JL Magic branding anywhere customers can see.
 - The welcome's category buttons are gone: they repeated the header's category bar on the same
   screen and would have shown only 8 of 20+ real categories.
 - The red italic accent is the hero's "delivered." only; the story and closing headings are roman.
+
+**Critique follow-through (2026-11-12)**
+- Stage rows link "Browse the shop" (they all reach the whole shop until the catalogue has a
+  category or tag per level). Promise links go where they say (checkout → Terms, Questions → FAQ).
+- Phone menu leads with a red "Shop all"; on wider screens the category bar carries it.
+- Welcome art: a drawn fan of five cards (SVG in a Custom HTML block, ink/paper/red, Bodoni
+  indices) that opens once on arrival; static with reduced motion; hidden on phones. Replace with
+  a photo by swapping the block for an Image.
+- Tutorial cards always read as video: 16:9 frame with a red play mark (on ink when a tutorial has
+  no featured image). Compact rows on phones.
+- Inside black bands the focus ring is paper (red vanished on red buttons) and hovers are white
+  underlines rather than red text (red-on-black small text was ~3.7:1).
+- The hero's red italic "delivered." stays: the detector flags it as an italic serif display; it is
+  the one deliberate accent.
