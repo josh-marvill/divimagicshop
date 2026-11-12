@@ -40,8 +40,9 @@ else, so the existing WordPress, uploads and plugins are left alone.
 ## Editing the design
 
 Appearance → Editor. Every page type is a template, the header and footer are template parts,
-and the home page is five patterns: **Curtain welcome** (with a product spotlight), **Why shop here**,
-**Shop by category**, **Just in and on sale**, **Latest tutorials**. The shop,
+and the home page is six patterns (placeholder copy): **Curtain welcome**, **Why shop here**,
+**Shop story**, **Where are you on stage?**, **Latest tutorials**, **Closing curtain**. Product
+patterns (**Shop by category**, **Just in and on sale**, **Category shelves**) can still be added. The shop,
 category and search pages have a filter sidebar (**Shop filters** block) and the header a
 **Product search** and **Category bar**.
 
